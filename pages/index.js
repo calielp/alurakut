@@ -31,8 +31,6 @@ export default function Home() {
     }]);
     //const comunidades = comunidades[0];
     //const alteradorDeComunidades = comunidades[1];
-
-    console.log('nosso teste', );
     //const comunidades = ['Coisas burras ditas de forma inteligente (ou o inverso)'];
     const pessoasFavoritas = [
       'juunegreiros',
@@ -42,6 +40,18 @@ export default function Home() {
       'marcobrunodev',
       'felipefialho'
     ]
+
+    // 0 - pegar o array de dados do github
+    const seguidores = fetch('https://api.github.com/users/calielp/followers')
+      .then(function (respostaDoServidor) {
+        return respostaDoServidor.json();
+      })
+      .then(function(respostaCompleta) {
+        console.log(respostaCompleta);
+      })
+
+    // 1- Criar um box que vai ter um map, baseado nos items do array
+    // que pegamos no github
 
   return (
     <>
@@ -103,6 +113,24 @@ export default function Home() {
         </Box>
       </div>
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
+        <ProfileRelationsBoxWrapper>
+          <h2 className="smallTitle" style={{ color: 'white' }}>
+            seguidores ({seguidores.length})
+          </h2>
+        <ul>
+         {seguidores.map((itemAtual) => {
+           return (
+             <li key={itemAtual}>
+                <a href={`https://github.com/${itemAtual}.png`}>
+                  <img src={itemAtual.image} />
+                  <span>{itemAtual.title}</span>
+                </a>
+              </li>
+           )
+          })}
+          </ul>
+        </ProfileRelationsBoxWrapper>
+
         <ProfileRelationsBoxWrapper>
           <h2 className="smallTitle" style={{ color: 'white' }}>
             comunidades ({comunidades.length})
