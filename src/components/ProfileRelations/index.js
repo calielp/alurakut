@@ -4,6 +4,7 @@ import Box from '../Box';
 export const ProfileRelationsBoxWrapper = styled(Box)`
   ul {
     display: grid;
+    background-color: #39393c80;
     grid-gap: 8px;
     grid-template-columns: 1fr 1fr 1fr; 
     max-height: 220px;

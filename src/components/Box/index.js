@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Box = styled.div`
-  background: #FFFFFF;
+  background: #39393c80;
   border-radius: 8px;
   padding: 16px;
 
@@ -15,11 +15,13 @@ const Box = styled.div`
   }
   .title {
     font-size: 32px;
+    color: white;
     font-weight: 400;
     margin-bottom: 20px;
   }
   .subTitle {
     font-size: 18px;
+    color: white;
     font-weight: 400;
     margin-bottom: 20px;
   }
@@ -27,7 +29,7 @@ const Box = styled.div`
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 700;
-    color: #333333;
+    color: white;
     margin-bottom: 20px;
   }
   hr {
@@ -38,14 +40,14 @@ const Box = styled.div`
   }
   input {
     width: 100%;
-    background-color: #F4F4F4;
+    background-color: #39393c80;
     color: #333333;
     border: 0;
     padding: 14px 16px;
     margin-bottom: 14px;
     border-radius: 10000px;
     ::placeholder {
-      color: #333333;
+      color: white;
       opacity: 1;
     }
   }
@@ -54,7 +56,7 @@ const Box = styled.div`
     padding: 8px 12px;
     color: #FFFFFF;
     border-radius: 10000px;
-    background-color: #6F92BB;
+    background-color: #39393c80;
   }
 `; 
 
