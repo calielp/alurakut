@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import NextLink from 'next/link';
 
-
 const BASE_URL = 'http://alurakut.vercel.app/';
 const v = '1';
 
@@ -56,6 +55,7 @@ export function AlurakutMenu({ githubuser }) {
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
   background-color: #39393c80;
+  
   .alurakutMenuProfileSidebar {
     background: #000000f5;
     position: fixed;
@@ -321,10 +321,10 @@ OrkutNostalgicIconSet.List = styled.ul`
 // ================================================================================================================
 const AlurakutLoginScreen = css`
   :root {
-    --backgroundPrimary: #D9E6F6;
-    --backgroundSecondary: #F1F9FE;
-    --backgroundTertiary: #FFFFFF;
-    --backgroundQuarternary: #BBCDE8;
+    --backgroundPrimary: #39393c80;
+    --backgroundSecondary: #39393c80;
+    --backgroundTertiary: #39393c80;
+    --backgroundQuarternary: #39393c80;
     --colorPrimary: #2E7BB4;
     --colorSecondary: #388BB0;
     --colorTertiary: #2F4A71;
@@ -370,6 +370,7 @@ const AlurakutLoginScreen = css`
       }
       p {
         font-size: 12px;
+        color: white;
         line-height: 1.2;
         &:not(:last-child) {
           margin-bottom: 12px;
