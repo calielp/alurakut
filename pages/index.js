@@ -22,6 +22,28 @@ function ProfileSidebar(propriedades) {
    )
 }
 
+function ProfileRelationsBox(propriedades) {
+  return (
+    <ProfileRelationsBoxWrapper>
+      <h2 className="smallTitle" style={{ color: 'white' }}>
+        {propriedades.title} ({propriedades.items.length})
+      </h2>
+      <ul>
+        {/* {seguidores.map((itemAtual) => {
+          return (
+            <li key={itemAtual}>
+              <a href={`https://github.com/${itemAtual}.png`}>
+                <img src={itemAtual.image} />
+                <span>{itemAtual.title}</span>
+              </a>
+            </li>
+          )
+        })} */}
+      </ul>
+        </ProfileRelationsBoxWrapper>
+  )
+}
+
 export default function Home() {
     const usuarioAleatorio = 'calielp';
     const [comunidades, setComunidades] = React.useState([{
@@ -40,15 +62,19 @@ export default function Home() {
       'marcobrunodev',
       'felipefialho'
     ]
-
+  const [seguidores, setSeguidores] = React.useState([]);
     // 0 - pegar o array de dados do github
-    const seguidores = fetch('https://api.github.com/users/calielp/followers')
-      .then(function (respostaDoServidor) {
-        return respostaDoServidor.json();
-      })
-      .then(function(respostaCompleta) {
-        console.log(respostaCompleta);
-      })
+  React.useEffect(function() {
+    fetch('https://api.github.com/users/calielp/followers')
+    .then(function (respostaDoServidor) {
+      return respostaDoServidor.json();
+    })
+    .then(function(respostaCompleta) {
+      setSeguidores(respostaCompleta);
+    })
+  }, [])
+
+    console.log('seguidores antes do return', seguidores);
 
     // 1- Criar um box que vai ter um map, baseado nos items do array
     // que pegamos no github
@@ -64,7 +90,7 @@ export default function Home() {
       <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
         <Box>
           <h1 className="title">
-            bem vindo(a)
+            bem vindo(a) {usuarioAleatorio}
           </h1>
 
           <OrkutNostalgicIconSet />
@@ -113,24 +139,7 @@ export default function Home() {
         </Box>
       </div>
       <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
-        <ProfileRelationsBoxWrapper>
-          <h2 className="smallTitle" style={{ color: 'white' }}>
-            seguidores ({seguidores.length})
-          </h2>
-        <ul>
-         {seguidores.map((itemAtual) => {
-           return (
-             <li key={itemAtual}>
-                <a href={`https://github.com/${itemAtual}.png`}>
-                  <img src={itemAtual.image} />
-                  <span>{itemAtual.title}</span>
-                </a>
-              </li>
-           )
-          })}
-          </ul>
-        </ProfileRelationsBoxWrapper>
-
+        <ProfileRelationsBox title="Seguidores" items={seguidores}/>
         <ProfileRelationsBoxWrapper>
           <h2 className="smallTitle" style={{ color: 'white' }}>
             comunidades ({comunidades.length})
